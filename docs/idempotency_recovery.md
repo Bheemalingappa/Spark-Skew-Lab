@@ -9,7 +9,7 @@
 
 ## 1. Architectural Overview & Design Principles
 
-In production data engineering pipelines, operational failures, duplicate data transfers, process crashes, and the need to backfill historical partitions are inevitable. The SparkSkewLab data pipeline guarantees **exactly-once publishing semantics**, **zero duplicate record accumulation**, and **complete run traceability** through an integrated state ledger and two-phase staging architecture.
+In production data engineering pipelines, operational failures, duplicate data transfers, process crashes, and the need to backfill historical partitions are inevitable. The SparkSkewLab data pipeline implements **idempotent publishing semantics**, **prevents duplicate record accumulation across tested retries**, and maintains **full run traceability** through an integrated state ledger and two-phase staging architecture.
 
 ```
                           Incoming Batch Request
@@ -98,7 +98,7 @@ Idempotency ensures that executing a workload multiple times on the same input p
    - Published target files are not modified (preserving original timestamps and contents).
    - An `IDEMPOTENT_CHECK` audit record is appended to the batch's run history.
    - The returned report reflects `status: "SKIPPED_IDEMPOTENT"`.
-3. **Guaranteed Row Balance**: Re-running the pipeline $N$ times guarantees that published row counts equal exactly the accepted counts from the initial run ($1\times$), not $N\times$.
+3. **Deterministic Row Balance**: Re-running the pipeline $N$ times in tested rerun scenarios ensures that published row counts equal exactly the accepted counts from the initial run ($1\times$), not $N\times$.
 
 ---
 
@@ -119,8 +119,8 @@ A critical vulnerability in naive data pipelines is the partial write: when a pi
    - `clean_order_events.csv.tmp` $\to$ `clean_order_events.csv`
    `os.replace()` is an atomic filesystem operation on Windows and POSIX systems.
 4. **Rollback on Error**: If any failure occurs during ingestion, validation, or commit:
-   - The entire `.staging_<run_id>` directory is immediately deleted.
-   - The published destination remains 100% pristine.
+   - The pipeline catches the exception and attempts to clean up the `.staging_<run_id>` directory.
+   - If publication has begun, previous files backed up to `.backup_<run_id>/` are restored.
    - The batch is marked `FAILED` in the ledger with error messages and stack traces.
 
 ---
@@ -130,7 +130,7 @@ A critical vulnerability in naive data pipelines is the partial write: when a pi
 When an execution fails due to transient environment errors, disk locks, or input transfer delays:
 1. **Retry Detection**: Submitting the same `batch_id` whose latest status in the ledger is `FAILED` automatically triggers a **Retry**.
 2. **Attempt Counter**: `retry_count` is incremented in the batch ledger.
-3. **Clean Slate Execution**: Retries re-execute from raw input files into a fresh staging directory (`.staging_<new_run_id>`), guaranteeing no residual state from previous failed attempts.
+3. **Clean Slate Staging**: Retries execute from raw input files into a fresh staging directory (`.staging_<new_run_id>`), aiming to isolate the new attempt from prior failed runs.
 4. **Status Transition**: Upon successful completion, the batch transitions from `FAILED` $\to$ `SUCCESS`.
 
 ---
@@ -144,9 +144,9 @@ If a host machine powers off or an executor process is killed (`SIGKILL` / task 
 2. **Recovery Execution**: Running the pipeline with the interrupted `batch_id` recognizes the `INTERRUPTED` state:
    - Sets attempt type to `RESTART`.
    - Increments `recovery_attempt_count`.
-   - Wipes any orphaned staging directories.
+   - Attempts to clean up orphaned staging directories.
    - Resumes processing from input stage.
-3. **Zero Output Duplication**: Because partial outputs were isolated to staging, the restart completes cleanly with exact record counts.
+3. **Zero Output Duplication in Tested Scenarios**: Because partial outputs are isolated to staging, restarts in tested scenarios complete cleanly with exact record counts.
 
 ---
 
@@ -164,7 +164,7 @@ pipeline = IdempotentPipeline(
 result = pipeline.run()
 ```
 
-### Backfill Guarantees:
+### Backfill Invariants & Behavior:
 1. **Atomic Replacement**: Backfilling replaces the published dataset for `batch_2026_10` atomically via staging swap.
 2. **Historical Lineage Preservation**: Unlike an unrecorded overwrite, the ledger retains every historical run (`FIRST_RUN`, `IDEMPOTENT_CHECK`, `BACKFILL`), preserving audit trails.
 3. **Batch Isolation**: Re-publishing `batch_2026_10` touches only files and partitions belonging to that batch; all unrelated batches remain untouched.
