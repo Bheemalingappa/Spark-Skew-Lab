@@ -1,0 +1,111 @@
+============================================================
+ SparkSkewLab Optimized Query Execution Plan (Key Salting)
+ Settings: AQE=False, autoBroadcastJoinThreshold=-1
+ Composite Join Key: [customer_id, salt]
+============================================================
+
+== Physical Plan ==
+* HashAggregate (17)
++- Exchange (16)
+   +- * HashAggregate (15)
+      +- * HashAggregate (14)
+         +- * Project (13)
+            +- * SortMergeJoin Inner (12)
+               :- * Sort (5)
+               :  +- Exchange (4)
+               :     +- * Project (3)
+               :        +- * Filter (2)
+               :           +- Scan csv  (1)
+               +- * Sort (11)
+                  +- Exchange (10)
+                     +- * Generate (9)
+                        +- * Project (8)
+                           +- * Filter (7)
+                              +- Scan csv  (6)
+
+
+(1) Scan csv 
+Output [3]: [event_id#183, customer_id#184, order_amount#185]
+Batched: false
+Location: InMemoryFileIndex [file:/C:/CandidateWorkspace/outputs/clean/clean_order_events.csv]
+PushedFilters: [IsNotNull(customer_id)]
+ReadSchema: struct<event_id:string,customer_id:string,order_amount:decimal(12,2)>
+
+(2) Filter [codegen id : 1]
+Input [3]: [event_id#183, customer_id#184, order_amount#185]
+Condition : (isnotnull(customer_id#184) AND CASE WHEN (customer_id#184 = HOT_CUSTOMER) THEN isnotnull(pmod(hash(event_id#183, 42), 8)) ELSE true END)
+
+(3) Project [codegen id : 1]
+Output [4]: [event_id#183, customer_id#184, order_amount#185, CASE WHEN (customer_id#184 = HOT_CUSTOMER) THEN pmod(hash(event_id#183, 42), 8) ELSE 0 END AS salt#272]
+Input [3]: [event_id#183, customer_id#184, order_amount#185]
+
+(4) Exchange
+Input [4]: [event_id#183, customer_id#184, order_amount#185, salt#272]
+Arguments: hashpartitioning(customer_id#184, salt#272, 8), ENSURE_REQUIREMENTS, [plan_id=1014]
+
+(5) Sort [codegen id : 2]
+Input [4]: [event_id#183, customer_id#184, order_amount#185, salt#272]
+Arguments: [customer_id#184 ASC NULLS FIRST, salt#272 ASC NULLS FIRST], false, 0
+
+(6) Scan csv 
+Output [2]: [customer_id#176, customer_name#177]
+Batched: false
+Location: InMemoryFileIndex [file:/C:/CandidateWorkspace/outputs/clean/clean_customers.csv]
+PushedFilters: [IsNotNull(customer_id)]
+ReadSchema: struct<customer_id:string,customer_name:string>
+
+(7) Filter [codegen id : 3]
+Input [2]: [customer_id#176, customer_name#177]
+Condition : ((size(CASE WHEN (customer_id#176 = HOT_CUSTOMER) THEN [0,1,2,3,4,5,6,7] ELSE [0] END, false) > 0) AND isnotnull(customer_id#176))
+
+(8) Project [codegen id : 3]
+Output [3]: [customer_id#176, customer_name#177, CASE WHEN (customer_id#176 = HOT_CUSTOMER) THEN [0,1,2,3,4,5,6,7] ELSE [0] END AS salt_array#274]
+Input [2]: [customer_id#176, customer_name#177]
+
+(9) Generate [codegen id : 3]
+Input [3]: [customer_id#176, customer_name#177, salt_array#274]
+Arguments: explode(salt_array#274), [customer_id#176, customer_name#177], false, [salt#276]
+
+(10) Exchange
+Input [3]: [customer_id#176, customer_name#177, salt#276]
+Arguments: hashpartitioning(customer_id#176, salt#276, 8), ENSURE_REQUIREMENTS, [plan_id=1024]
+
+(11) Sort [codegen id : 4]
+Input [3]: [customer_id#176, customer_name#177, salt#276]
+Arguments: [customer_id#176 ASC NULLS FIRST, salt#276 ASC NULLS FIRST], false, 0
+
+(12) SortMergeJoin [codegen id : 5]
+Left keys [2]: [customer_id#184, salt#272]
+Right keys [2]: [customer_id#176, salt#276]
+Join type: Inner
+Join condition: None
+
+(13) Project [codegen id : 5]
+Output [5]: [customer_id#184, salt#272, event_id#183, order_amount#185, customer_name#177]
+Input [7]: [event_id#183, customer_id#184, order_amount#185, salt#272, customer_id#176, customer_name#177, salt#276]
+
+(14) HashAggregate [codegen id : 5]
+Input [5]: [customer_id#184, salt#272, event_id#183, order_amount#185, customer_name#177]
+Keys [3]: [customer_id#184, customer_name#177, salt#272]
+Functions [2]: [count(event_id#183), sum(order_amount#185)]
+Aggregate Attributes [2]: [count(event_id#183)#294L, sum(order_amount#185)#295]
+Results [4]: [customer_id#184, customer_name#177, count(event_id#183)#294L AS partial_order_count#277L, sum(order_amount#185)#295 AS partial_total_amount#278]
+
+(15) HashAggregate [codegen id : 5]
+Input [4]: [customer_id#184, customer_name#177, partial_order_count#277L, partial_total_amount#278]
+Keys [2]: [customer_id#184, customer_name#177]
+Functions [2]: [partial_sum(partial_order_count#277L), partial_sum(partial_total_amount#278)]
+Aggregate Attributes [3]: [sum#308L, sum#309, isEmpty#310]
+Results [5]: [customer_id#184, customer_name#177, sum#311L, sum#312, isEmpty#313]
+
+(16) Exchange
+Input [5]: [customer_id#184, customer_name#177, sum#311L, sum#312, isEmpty#313]
+Arguments: hashpartitioning(customer_id#184, customer_name#177, 8), ENSURE_REQUIREMENTS, [plan_id=1034]
+
+(17) HashAggregate [codegen id : 6]
+Input [5]: [customer_id#184, customer_name#177, sum#311L, sum#312, isEmpty#313]
+Keys [2]: [customer_id#184, customer_name#177]
+Functions [2]: [sum(partial_order_count#277L), sum(partial_total_amount#278)]
+Aggregate Attributes [2]: [sum(partial_order_count#277L)#304L, sum(partial_total_amount#278)#305]
+Results [5]: [customer_id#184, customer_name#177, sum(partial_order_count#277L)#304L AS order_count#296L, round(sum(partial_total_amount#278)#305, 2) AS total_amount#297, round((sum(partial_total_amount#278)#305 / cast(sum(partial_order_count#277L)#304L as decimal(20,0))), 2) AS average_order_amount#298]
+

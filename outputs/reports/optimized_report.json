@@ -1,0 +1,88 @@
+{
+  "project": "SparkSkewLab",
+  "workload_type": "optimized_salting",
+  "run_id": "optimized_run_001",
+  "batch_id": "batch_prod_001",
+  "execution_status": "SUCCESS",
+  "dataset_metrics": {
+    "input_customer_count": 1000,
+    "input_event_count": 99700,
+    "output_customer_summary_count": 1000,
+    "salt_bucket_count": 8,
+    "hot_keys": [
+      "HOT_CUSTOMER"
+    ],
+    "salt_distribution": {
+      "hot_keys": [
+        "HOT_CUSTOMER"
+      ],
+      "total_hot_events": 59934,
+      "salt_bucket_counts": {
+        "0": 7472,
+        "1": 7597,
+        "2": 7373,
+        "3": 7510,
+        "4": 7534,
+        "5": 7515,
+        "6": 7490,
+        "7": 7443
+      },
+      "min_bucket_events": 7373,
+      "max_bucket_events": 7597,
+      "bucket_variance_ratio": 1.0304,
+      "normal_events_non_zero_salt_count": 0
+    }
+  },
+  "spark_configuration": {
+    "shuffle_partitions": 8,
+    "adaptive_query_execution_enabled": false,
+    "auto_broadcast_join_threshold": -1,
+    "sql_timezone": "UTC",
+    "master": "local[*]"
+  },
+  "partition_distribution": {
+    "num_partitions": 8,
+    "partition_record_counts": {
+      "0": 12653,
+      "1": 27517,
+      "2": 4100,
+      "3": 12120,
+      "4": 4960,
+      "5": 21025,
+      "6": 12301,
+      "7": 5024
+    },
+    "total_rows": 99700,
+    "min_rows_in_partition": 4100,
+    "max_rows_in_partition": 27517,
+    "mean_rows_in_partition": 12462.5,
+    "median_rows_in_partition": 12210.5,
+    "imbalance_ratio_max_mean": 2.208,
+    "imbalance_ratio_max_min": 6.7115,
+    "peak_load_percentage": 27.6
+  },
+  "benchmark_results": {
+    "warmup_runtime_seconds": 2.3699,
+    "measured_runtimes_seconds": [
+      2.6149,
+      1.3503,
+      1.5903
+    ],
+    "min_runtime_seconds": 1.3503,
+    "max_runtime_seconds": 2.6149,
+    "mean_runtime_seconds": 1.8518,
+    "median_runtime_seconds": 1.5903,
+    "number_of_measured_runs": 3
+  },
+  "artifact_paths": {
+    "customer_summary_parquet": "C:\\CandidateWorkspace\\outputs\\optimized\\customer_summary",
+    "execution_plan_txt": "C:\\CandidateWorkspace\\outputs\\reports\\optimized_execution_plan.txt",
+    "optimized_report_json": "C:\\CandidateWorkspace\\outputs\\reports\\optimized_report.json"
+  },
+  "environment": {
+    "python_version": "3.14.7",
+    "java_home": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.20.101-hotspot",
+    "pyspark_version": "4.3.0",
+    "host_os": "Windows-11-10.0.26300-SP0"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "project": "SparkSkewLab",
+  "run_id": "run_20261114_085218_85a5c551",
+  "batch_id": "batch_prod_001",
+  "input_directory": "C:\\CandidateWorkspace\\data\\generated",
+  "total_input_customers": 1000,
+  "accepted_customers": 1000,
+  "rejected_customers": 0,
+  "total_input_events": 100000,
+  "accepted_events": 99700,
+  "rejected_events": 300,
+  "rejection_counts_grouped_by_reason": {
+    "invalid_customer_reference": 50,
+    "invalid_or_missing_timestamp": 50,
+    "duplicate_event_id": 50,
+    "missing_customer_id": 50,
+    "negative_or_zero_order_amount": 50,
+    "missing_event_id": 50
+  },
+  "duplicate_count": 50,
+  "invalid_reference_count": 50,
+  "missing_field_counts": {
+    "missing_customer_id": 50,
+    "missing_event_id": 50,
+    "missing_customer_name": 0,
+    "missing_city": 0,
+    "missing_or_invalid_timestamp": 50
+  },
+  "reconciliation": {
+    "customers_balanced": true,
+    "events_balanced": true
+  },
+  "generated_at": "2026-11-14T08:52:19.523041+00:00"
+}

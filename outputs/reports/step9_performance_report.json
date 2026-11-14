@@ -1,0 +1,106 @@
+{
+  "project": "SparkSkewLab",
+  "step": "step_9_performance_measurement_and_optimization",
+  "timestamp": "2026-11-14T12:38:38Z",
+  "dataset": {
+    "input_customers": 1000,
+    "input_events": 99700,
+    "hot_customer_id": "HOT_CUSTOMER",
+    "hot_customer_events": 59934,
+    "hot_customer_percentage": 60.11
+  },
+  "spark_configuration": {
+    "master": "local[*]",
+    "shuffle_partitions": 8,
+    "adaptive_query_execution_enabled": false,
+    "auto_broadcast_join_threshold": -1,
+    "sql_timezone": "UTC"
+  },
+  "performance_metrics": {
+    "baseline": {
+      "warmup_seconds": 4.668,
+      "measured_runs_seconds": [
+        1.5893,
+        1.4767,
+        1.0638
+      ],
+      "min_seconds": 1.0638,
+      "max_seconds": 1.5893,
+      "mean_seconds": 1.3766,
+      "median_seconds": 1.4767
+    },
+    "optimized": {
+      "warmup_seconds": 2.3699,
+      "measured_runs_seconds": [
+        2.6149,
+        1.3503,
+        1.5903
+      ],
+      "min_seconds": 1.3503,
+      "max_seconds": 2.6149,
+      "mean_seconds": 1.8518,
+      "median_seconds": 1.5903,
+      "salt_bucket_count": 8
+    },
+    "comparison": {
+      "speedup_factor": 0.9286,
+      "runtime_improvement_percent": -7.69,
+      "baseline_peak_partition_rows": 64660,
+      "optimized_peak_partition_rows": 27517,
+      "peak_partition_load_reduction_percent": 57.44,
+      "is_optimized_faster": false
+    }
+  },
+  "partition_distribution": {
+    "baseline": {
+      "num_partitions": 8,
+      "partition_record_counts": {
+        "0": 4678,
+        "1": 5530,
+        "2": 4261,
+        "3": 64660,
+        "4": 5662,
+        "5": 5064,
+        "6": 4982,
+        "7": 4863
+      },
+      "total_rows": 99700,
+      "min_rows_in_partition": 4261,
+      "max_rows_in_partition": 64660,
+      "mean_rows_in_partition": 12462.5,
+      "median_rows_in_partition": 5023.0,
+      "imbalance_ratio_max_mean": 5.1884,
+      "imbalance_ratio_max_min": 15.1748,
+      "peak_load_percentage": 64.85
+    },
+    "optimized": {
+      "num_partitions": 8,
+      "partition_record_counts": {
+        "0": 12653,
+        "1": 27517,
+        "2": 4100,
+        "3": 12120,
+        "4": 4960,
+        "5": 21025,
+        "6": 12301,
+        "7": 5024
+      },
+      "total_rows": 99700,
+      "min_rows_in_partition": 4100,
+      "max_rows_in_partition": 27517,
+      "mean_rows_in_partition": 12462.5,
+      "median_rows_in_partition": 12210.5,
+      "imbalance_ratio_max_mean": 2.208,
+      "imbalance_ratio_max_min": 6.7115,
+      "peak_load_percentage": 27.6
+    }
+  },
+  "correctness_reconciliation": {
+    "reconciliation_status": "PASSED",
+    "baseline_customer_count": 1000,
+    "optimized_customer_count": 1000,
+    "order_count_mismatches": 0,
+    "amount_mismatches": 0,
+    "average_amount_mismatches": 0
+  }
+}

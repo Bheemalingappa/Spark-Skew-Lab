@@ -1,0 +1,119 @@
+{
+  "project": "SparkSkewLab",
+  "workload_type": "baseline_unmitigated",
+  "run_id": "baseline_run_001",
+  "batch_id": "batch_prod_001",
+  "execution_status": "SUCCESS",
+  "dataset_metrics": {
+    "input_customer_count": 1000,
+    "input_event_count": 99700,
+    "output_customer_summary_count": 1000,
+    "hot_customer_id": "HOT_CUSTOMER",
+    "hot_customer_event_count": 59934,
+    "hot_customer_percentage": 60.11,
+    "top_10_customer_frequencies": [
+      {
+        "customer_id": "HOT_CUSTOMER",
+        "event_count": 59934,
+        "percentage": 60.11
+      },
+      {
+        "customer_id": "CUST_000659",
+        "event_count": 61,
+        "percentage": 0.06
+      },
+      {
+        "customer_id": "CUST_000753",
+        "event_count": 59,
+        "percentage": 0.06
+      },
+      {
+        "customer_id": "CUST_000183",
+        "event_count": 57,
+        "percentage": 0.06
+      },
+      {
+        "customer_id": "CUST_000233",
+        "event_count": 57,
+        "percentage": 0.06
+      },
+      {
+        "customer_id": "CUST_000361",
+        "event_count": 56,
+        "percentage": 0.06
+      },
+      {
+        "customer_id": "CUST_000537",
+        "event_count": 56,
+        "percentage": 0.06
+      },
+      {
+        "customer_id": "CUST_000806",
+        "event_count": 56,
+        "percentage": 0.06
+      },
+      {
+        "customer_id": "CUST_000270",
+        "event_count": 56,
+        "percentage": 0.06
+      },
+      {
+        "customer_id": "CUST_000439",
+        "event_count": 56,
+        "percentage": 0.06
+      }
+    ]
+  },
+  "spark_configuration": {
+    "shuffle_partitions": 8,
+    "adaptive_query_execution_enabled": false,
+    "auto_broadcast_join_threshold": -1,
+    "sql_timezone": "UTC",
+    "master": "local[*]"
+  },
+  "partition_distribution": {
+    "num_partitions": 8,
+    "partition_record_counts": {
+      "0": 4678,
+      "1": 5530,
+      "2": 4261,
+      "3": 64660,
+      "4": 5662,
+      "5": 5064,
+      "6": 4982,
+      "7": 4863
+    },
+    "total_rows": 99700,
+    "min_rows_in_partition": 4261,
+    "max_rows_in_partition": 64660,
+    "mean_rows_in_partition": 12462.5,
+    "median_rows_in_partition": 5023.0,
+    "imbalance_ratio_max_mean": 5.1884,
+    "imbalance_ratio_max_min": 15.1748,
+    "peak_load_percentage": 64.85
+  },
+  "benchmark_results": {
+    "warmup_runtime_seconds": 4.668,
+    "measured_runtimes_seconds": [
+      1.5893,
+      1.4767,
+      1.0638
+    ],
+    "min_runtime_seconds": 1.0638,
+    "max_runtime_seconds": 1.5893,
+    "mean_runtime_seconds": 1.3766,
+    "median_runtime_seconds": 1.4767,
+    "number_of_measured_runs": 3
+  },
+  "artifact_paths": {
+    "customer_summary_parquet": "C:\\CandidateWorkspace\\outputs\\baseline\\customer_summary",
+    "execution_plan_txt": "C:\\CandidateWorkspace\\outputs\\reports\\baseline_execution_plan.txt",
+    "baseline_report_json": "C:\\CandidateWorkspace\\outputs\\reports\\baseline_report.json"
+  },
+  "environment": {
+    "python_version": "3.14.7",
+    "java_home": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.20.101-hotspot",
+    "pyspark_version": "4.3.0",
+    "host_os": "Windows-11-10.0.26300-SP0"
+  }
+}

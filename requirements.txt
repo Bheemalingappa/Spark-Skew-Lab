@@ -1,0 +1,10 @@
+# Core Framework
+pyspark>=3.5.0,<=4.3.0
+
+# Data & Parquet Processing
+pyarrow>=15.0.0
+pandas>=2.0.0
+
+# Testing & Quality
+pytest>=8.0.0
+pytest-cov>=4.1.0

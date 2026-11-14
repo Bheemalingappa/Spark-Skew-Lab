@@ -1,0 +1,78 @@
+{
+  "project": "SparkSkewLab",
+  "random_seed": 42,
+  "number_of_customers": 50,
+  "total_generated_events": 1000,
+  "valid_record_count": 982,
+  "invalid_record_count": 18,
+  "invalid_records_breakdown": {
+    "missing_customer_id": 3,
+    "negative_order_amount": 3,
+    "missing_event_id": 3,
+    "duplicate_event_id": 3,
+    "invalid_customer_reference": 3,
+    "missing_timestamp": 3
+  },
+  "configured_skew_ratio": 0.6,
+  "hot_customer_id": "HOT_CUSTOMER",
+  "hot_customer_event_count": 577,
+  "hot_customer_percentage": 57.7,
+  "top_10_customer_frequencies": [
+    {
+      "customer_id": "HOT_CUSTOMER",
+      "event_count": 577,
+      "percentage": 57.7
+    },
+    {
+      "customer_id": "CUST_000016",
+      "event_count": 15,
+      "percentage": 1.5
+    },
+    {
+      "customer_id": "CUST_000011",
+      "event_count": 14,
+      "percentage": 1.4
+    },
+    {
+      "customer_id": "CUST_000009",
+      "event_count": 14,
+      "percentage": 1.4
+    },
+    {
+      "customer_id": "CUST_000044",
+      "event_count": 12,
+      "percentage": 1.2
+    },
+    {
+      "customer_id": "CUST_000006",
+      "event_count": 12,
+      "percentage": 1.2
+    },
+    {
+      "customer_id": "CUST_000039",
+      "event_count": 12,
+      "percentage": 1.2
+    },
+    {
+      "customer_id": "CUST_000042",
+      "event_count": 12,
+      "percentage": 1.2
+    },
+    {
+      "customer_id": "CUST_000032",
+      "event_count": 12,
+      "percentage": 1.2
+    },
+    {
+      "customer_id": "CUST_000027",
+      "event_count": 12,
+      "percentage": 1.2
+    }
+  ],
+  "output_file_paths": {
+    "customers_csv": "C:\\Users\\Bheema\\AppData\\Local\\Temp\\pytest-of-Bheema\\pytest-26\\test_invalid_records_present_a0\\test_data\\customers.csv",
+    "order_events_csv": "C:\\Users\\Bheema\\AppData\\Local\\Temp\\pytest-of-Bheema\\pytest-26\\test_invalid_records_present_a0\\test_data\\order_events.csv",
+    "generation_report_json": "C:\\CandidateWorkspace\\outputs\\reports\\generation_report.json"
+  },
+  "generation_timestamp": "2026-11-14T12:20:53.885018+00:00"
+}

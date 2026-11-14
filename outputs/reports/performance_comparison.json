@@ -1,0 +1,117 @@
+{
+  "project": "SparkSkewLab",
+  "benchmark_timestamp": "2026-11-14T12:38:38Z",
+  "comparison_summary": {
+    "baseline_median_runtime_seconds": 1.4767,
+    "optimized_median_runtime_seconds": 1.5903,
+    "speedup_factor": 0.9286,
+    "runtime_improvement_percent": -7.69,
+    "is_faster": false,
+    "reconciliation_status": "PASSED"
+  },
+  "baseline_details": {
+    "warmup_runtime_seconds": 4.668,
+    "measured_runtimes_seconds": [
+      1.5893,
+      1.4767,
+      1.0638
+    ],
+    "min_runtime_seconds": 1.0638,
+    "max_runtime_seconds": 1.5893,
+    "mean_runtime_seconds": 1.3766,
+    "median_runtime_seconds": 1.4767,
+    "number_of_measured_runs": 3
+  },
+  "optimized_details": {
+    "warmup_runtime_seconds": 2.3699,
+    "measured_runtimes_seconds": [
+      2.6149,
+      1.3503,
+      1.5903
+    ],
+    "min_runtime_seconds": 1.3503,
+    "max_runtime_seconds": 2.6149,
+    "mean_runtime_seconds": 1.8518,
+    "median_runtime_seconds": 1.5903,
+    "number_of_measured_runs": 3
+  },
+  "baseline_partition_distribution": {
+    "num_partitions": 8,
+    "partition_record_counts": {
+      "0": 4678,
+      "1": 5530,
+      "2": 4261,
+      "3": 64660,
+      "4": 5662,
+      "5": 5064,
+      "6": 4982,
+      "7": 4863
+    },
+    "total_rows": 99700,
+    "min_rows_in_partition": 4261,
+    "max_rows_in_partition": 64660,
+    "mean_rows_in_partition": 12462.5,
+    "median_rows_in_partition": 5023.0,
+    "imbalance_ratio_max_mean": 5.1884,
+    "imbalance_ratio_max_min": 15.1748,
+    "peak_load_percentage": 64.85
+  },
+  "optimized_partition_distribution": {
+    "num_partitions": 8,
+    "partition_record_counts": {
+      "0": 12653,
+      "1": 27517,
+      "2": 4100,
+      "3": 12120,
+      "4": 4960,
+      "5": 21025,
+      "6": 12301,
+      "7": 5024
+    },
+    "total_rows": 99700,
+    "min_rows_in_partition": 4100,
+    "max_rows_in_partition": 27517,
+    "mean_rows_in_partition": 12462.5,
+    "median_rows_in_partition": 12210.5,
+    "imbalance_ratio_max_mean": 2.208,
+    "imbalance_ratio_max_min": 6.7115,
+    "peak_load_percentage": 27.6
+  },
+  "salt_distribution": {
+    "hot_keys": [
+      "HOT_CUSTOMER"
+    ],
+    "total_hot_events": 59934,
+    "salt_bucket_counts": {
+      "0": 7472,
+      "1": 7597,
+      "2": 7373,
+      "3": 7510,
+      "4": 7534,
+      "5": 7515,
+      "6": 7490,
+      "7": 7443
+    },
+    "min_bucket_events": 7373,
+    "max_bucket_events": 7597,
+    "bucket_variance_ratio": 1.0304,
+    "normal_events_non_zero_salt_count": 0
+  },
+  "environment_and_spark_config": {
+    "shuffle_partitions": 8,
+    "adaptive_query_execution_enabled": false,
+    "auto_broadcast_join_threshold": -1,
+    "master": "local[*]",
+    "num_salt_buckets": 8,
+    "pyspark_version": "4.3.0",
+    "python_version": "3.14.7",
+    "host_os": "Windows-11-10.0.26300-SP0"
+  },
+  "reconciliation_summary": {
+    "baseline_row_count": 1000,
+    "optimized_row_count": 1000,
+    "order_count_mismatches": 0,
+    "amount_mismatches": 0,
+    "average_amount_mismatches": 0
+  }
+}

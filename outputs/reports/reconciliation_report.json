@@ -1,0 +1,17 @@
+{
+  "overall_correctness_status": "PASSED",
+  "baseline_row_count": 1000,
+  "optimized_row_count": 1000,
+  "missing_customer_keys_count": 0,
+  "missing_customer_keys": [],
+  "unexpected_customer_keys_count": 0,
+  "unexpected_customer_keys": [],
+  "customer_name_mismatch_count": 0,
+  "order_count_mismatches": 0,
+  "amount_mismatches": 0,
+  "average_amount_mismatches": 0,
+  "allowed_amount_tolerance": 0.01,
+  "mismatched_sample_records": [],
+  "baseline_path": "C:\\CandidateWorkspace\\outputs\\baseline\\customer_summary",
+  "optimized_path": "C:\\CandidateWorkspace\\outputs\\optimized\\customer_summary"
+}

@@ -1,0 +1,74 @@
+{
+  "demonstration_date": "2026-11-14T10:37:39.877972+00:00",
+  "scenarios": {
+    "A_first_time_batch": {
+      "batch_id": "batch_demo_01",
+      "run_id": "run_20261114_103739_44bc92ef",
+      "processing_status": "SUCCESS",
+      "attempt_type": "FIRST_RUN",
+      "published_counts": {
+        "customers": 3,
+        "events": 5,
+        "total": 8
+      },
+      "reconciliation_status": "BALANCED",
+      "evidence": "Successfully published clean datasets; registered as FIRST_RUN in ledger."
+    },
+    "B_idempotent_rerun": {
+      "batch_id": "batch_demo_01",
+      "run_id": "run_20261114_103739_b2125208",
+      "processing_status": "SKIPPED_IDEMPOTENT",
+      "attempt_type": "IDEMPOTENT_CHECK",
+      "published_counts": {
+        "customers": 3,
+        "events": 5,
+        "total": 8
+      },
+      "evidence": "Detected prior successful publish; skipped processing with 0 duplicate rows."
+    },
+    "C_failure_and_retry": {
+      "failure_attempt": {
+        "batch_id": "batch_demo_fail",
+        "run_id": "run_20261114_103739_db8655ab",
+        "status": "FAILED",
+        "error_captured": "Input file not found at path: C:\\CandidateWorkspace\\outputs\\demo_step6\\input_fail\\order_events.csv",
+        "staging_cleaned": true
+      },
+      "retry_recovery_attempt": {
+        "batch_id": "batch_demo_fail",
+        "run_id": "run_20261114_103739_8c461898",
+        "status": "SUCCESS",
+        "attempt_type": "RETRY",
+        "retry_count": 1,
+        "published_counts": {
+          "customers": 3,
+          "events": 5,
+          "total": 8
+        }
+      },
+      "evidence": "Staging isolation prevented partial publishing during failure; retry recovered cleanly."
+    },
+    "D_backfill_historical": {
+      "batch_id": "batch_demo_01",
+      "run_id": "run_20261114_103739_0814a7f9",
+      "processing_status": "SUCCESS",
+      "attempt_type": "BACKFILL",
+      "is_backfill": true,
+      "published_counts": {
+        "customers": 3,
+        "events": 6,
+        "total": 9
+      },
+      "total_historical_runs_retained": 3,
+      "history_run_types": [
+        "FIRST_RUN",
+        "IDEMPOTENT_CHECK",
+        "BACKFILL"
+      ],
+      "evidence": "Atomically replaced published batch data while preserving all previous run audit records."
+    }
+  },
+  "overall_status": "PASSED",
+  "ledger_total_batches": 2,
+  "ledger_total_runs": 5
+}

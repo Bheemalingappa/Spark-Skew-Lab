@@ -1,0 +1,170 @@
+{
+  "project": "SparkSkewLab",
+  "step": "Step 8 \u2014 Output Correctness Reconciliation & Assertion Suite",
+  "tolerance": "0.01",
+  "full_dataset_reconciliation": {
+    "status": "PASSED",
+    "tier1_source_to_staging": {
+      "status": "PASSED",
+      "customers": {
+        "raw_count": 1000,
+        "clean_count": 1000,
+        "quarantined_count": 0,
+        "sum_clean_plus_quar": 1000,
+        "is_balanced": true,
+        "difference": 0
+      },
+      "events": {
+        "raw_count": 100000,
+        "clean_count": 99700,
+        "quarantined_count": 300,
+        "sum_clean_plus_quar": 100000,
+        "is_balanced": true,
+        "difference": 0
+      }
+    },
+    "tier2_staging_to_baseline_target": {
+      "status": "PASSED",
+      "clean_event_count": 99700,
+      "target_order_count": 99700,
+      "order_count_conserved": true,
+      "clean_revenue": "62848597.23",
+      "target_revenue": "62848597.23",
+      "revenue_difference": "0.00",
+      "revenue_conserved": true,
+      "referential_integrity": {
+        "clean_customers_count": 1000,
+        "referenced_in_events_count": 1000,
+        "orphan_customer_refs_count": 0,
+        "is_valid": true
+      },
+      "target_keys_integrity": {
+        "target_customer_rows": 1000,
+        "target_unique_keys": 1000,
+        "has_duplicate_keys": false,
+        "missing_keys_count": 0,
+        "unexpected_keys_count": 0,
+        "is_complete": true
+      }
+    },
+    "tier2_staging_to_optimized_target": {
+      "status": "PASSED",
+      "clean_event_count": 99700,
+      "target_order_count": 99700,
+      "order_count_conserved": true,
+      "clean_revenue": "62848597.23",
+      "target_revenue": "62848597.23",
+      "revenue_difference": "0.00",
+      "revenue_conserved": true,
+      "referential_integrity": {
+        "clean_customers_count": 1000,
+        "referenced_in_events_count": 1000,
+        "orphan_customer_refs_count": 0,
+        "is_valid": true
+      },
+      "target_keys_integrity": {
+        "target_customer_rows": 1000,
+        "target_unique_keys": 1000,
+        "has_duplicate_keys": false,
+        "missing_keys_count": 0,
+        "unexpected_keys_count": 0,
+        "is_complete": true
+      }
+    },
+    "tier5_baseline_vs_optimized_equivalence": {
+      "status": "PASSED",
+      "baseline_customer_count": 1000,
+      "optimized_customer_count": 1000,
+      "missing_keys_count": 0,
+      "unexpected_keys_count": 0,
+      "customer_name_mismatch_count": 0,
+      "order_count_mismatch_count": 0,
+      "total_amount_mismatch_count": 0,
+      "average_order_amount_mismatch_count": 0,
+      "sample_discrepancies": []
+    }
+  },
+  "sample_dataset_reconciliation": {
+    "status": "PASSED",
+    "tier1_source_to_staging": {
+      "status": "PASSED",
+      "customers": {
+        "raw_count": 100,
+        "clean_count": 100,
+        "quarantined_count": 0,
+        "sum_clean_plus_quar": 100,
+        "is_balanced": true,
+        "difference": 0
+      },
+      "events": {
+        "raw_count": 1000,
+        "clean_count": 988,
+        "quarantined_count": 12,
+        "sum_clean_plus_quar": 1000,
+        "is_balanced": true,
+        "difference": 0
+      }
+    },
+    "tier2_staging_to_baseline_target": {
+      "status": "PASSED",
+      "clean_event_count": 988,
+      "target_order_count": 988,
+      "order_count_conserved": true,
+      "clean_revenue": "626564.58",
+      "target_revenue": "626564.58",
+      "revenue_difference": "0.00",
+      "revenue_conserved": true,
+      "referential_integrity": {
+        "clean_customers_count": 100,
+        "referenced_in_events_count": 98,
+        "orphan_customer_refs_count": 0,
+        "is_valid": true
+      },
+      "target_keys_integrity": {
+        "target_customer_rows": 98,
+        "target_unique_keys": 98,
+        "has_duplicate_keys": false,
+        "missing_keys_count": 0,
+        "unexpected_keys_count": 0,
+        "is_complete": true
+      }
+    },
+    "tier2_staging_to_optimized_target": {
+      "status": "PASSED",
+      "clean_event_count": 988,
+      "target_order_count": 988,
+      "order_count_conserved": true,
+      "clean_revenue": "626564.58",
+      "target_revenue": "626564.58",
+      "revenue_difference": "0.00",
+      "revenue_conserved": true,
+      "referential_integrity": {
+        "clean_customers_count": 100,
+        "referenced_in_events_count": 98,
+        "orphan_customer_refs_count": 0,
+        "is_valid": true
+      },
+      "target_keys_integrity": {
+        "target_customer_rows": 98,
+        "target_unique_keys": 98,
+        "has_duplicate_keys": false,
+        "missing_keys_count": 0,
+        "unexpected_keys_count": 0,
+        "is_complete": true
+      }
+    },
+    "tier5_baseline_vs_optimized_equivalence": {
+      "status": "PASSED",
+      "baseline_customer_count": 98,
+      "optimized_customer_count": 98,
+      "missing_keys_count": 0,
+      "unexpected_keys_count": 0,
+      "customer_name_mismatch_count": 0,
+      "order_count_mismatch_count": 0,
+      "total_amount_mismatch_count": 0,
+      "average_order_amount_mismatch_count": 0,
+      "sample_discrepancies": []
+    }
+  },
+  "overall_status": "PASSED"
+}

@@ -1,0 +1,30 @@
+{
+  "run_id": "run_20261114_085218_85a5c551",
+  "batch_id": "batch_prod_001",
+  "start_timestamp": "2026-11-14T08:52:18.400916+00:00",
+  "end_timestamp": "2026-11-14T08:52:19.522705+00:00",
+  "duration_seconds": 1.1218,
+  "status": "SUCCESS",
+  "input_and_output_counts": {
+    "total_input_rows": 101000,
+    "total_accepted_rows": 100700,
+    "total_quarantined_rows": 300,
+    "customers": {
+      "input": 1000,
+      "accepted": 1000,
+      "rejected": 0
+    },
+    "events": {
+      "input": 100000,
+      "accepted": 99700,
+      "rejected": 300
+    }
+  },
+  "output_paths": {
+    "clean_customers": "C:\\CandidateWorkspace\\outputs\\clean\\clean_customers.csv",
+    "clean_order_events": "C:\\CandidateWorkspace\\outputs\\clean\\clean_order_events.csv",
+    "quarantined_customers": "C:\\CandidateWorkspace\\outputs\\quarantine\\quarantined_customers.csv",
+    "quarantined_order_events": "C:\\CandidateWorkspace\\outputs\\quarantine\\quarantined_order_events.csv"
+  },
+  "error_details": null
+}

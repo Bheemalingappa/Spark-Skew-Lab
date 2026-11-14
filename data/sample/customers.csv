@@ -1,0 +1,101 @@
+customer_id,customer_name,city,customer_segment
+HOT_CUSTOMER,MegaRetail Global Enterprises,New York,ENTERPRISE
+CUST_000001,Linda Smith,Seattle,ENTERPRISE
+CUST_000002,Jessica Davis,Chicago,RETAIL
+CUST_000003,Paul Williams,San Jose,VIP
+CUST_000004,Robert Smith,Los Angeles,WHOLESALE
+CUST_000005,Joseph Taylor,San Jose,RETAIL
+CUST_000006,Emily Miller,Seattle,VIP
+CUST_000007,Joseph Anderson,San Jose,ENTERPRISE
+CUST_000008,James Harris,Denver,WHOLESALE
+CUST_000009,Margaret Hernandez,Phoenix,WHOLESALE
+CUST_000010,Susan Walker,Denver,ENTERPRISE
+CUST_000011,Michael Williams,San Antonio,RETAIL
+CUST_000012,Daniel Ramirez,Philadelphia,ENTERPRISE
+CUST_000013,Robert White,San Diego,RETAIL
+CUST_000014,Matthew Williams,Dallas,ENTERPRISE
+CUST_000015,Michelle Lewis,Boston,ENTERPRISE
+CUST_000016,Andrew Miller,Seattle,RETAIL
+CUST_000017,Robert Perez,Houston,ENTERPRISE
+CUST_000018,Jennifer Ramirez,Houston,RETAIL
+CUST_000019,Matthew Rodriguez,San Diego,ENTERPRISE
+CUST_000020,William Lopez,Philadelphia,WHOLESALE
+CUST_000021,Sarah Thompson,San Francisco,RETAIL
+CUST_000022,Joshua Lee,Chicago,WHOLESALE
+CUST_000023,William Anderson,San Antonio,ENTERPRISE
+CUST_000024,Emily Davis,Austin,ENTERPRISE
+CUST_000025,Patricia Davis,Boston,RETAIL
+CUST_000026,Christopher Gonzalez,Phoenix,RETAIL
+CUST_000027,Susan Robinson,San Jose,ENTERPRISE
+CUST_000028,Susan Lee,San Diego,VIP
+CUST_000029,Sandra Jones,Phoenix,WHOLESALE
+CUST_000030,Jessica White,Dallas,ENTERPRISE
+CUST_000031,Donna Wilson,San Francisco,VIP
+CUST_000032,Lisa Davis,Chicago,VIP
+CUST_000033,Jennifer Harris,New York,RETAIL
+CUST_000034,Elizabeth Lee,Chicago,VIP
+CUST_000035,Joshua Williams,San Antonio,VIP
+CUST_000036,Joshua Anderson,Dallas,ENTERPRISE
+CUST_000037,Emily Ramirez,New York,RETAIL
+CUST_000038,Paul Harris,Phoenix,ENTERPRISE
+CUST_000039,Linda Martinez,San Antonio,WHOLESALE
+CUST_000040,Sandra Smith,Seattle,ENTERPRISE
+CUST_000041,Steven Harris,Chicago,RETAIL
+CUST_000042,Karen Clark,Austin,WHOLESALE
+CUST_000043,Elizabeth Lopez,Denver,WHOLESALE
+CUST_000044,Paul Walker,Denver,RETAIL
+CUST_000045,Joshua Hernandez,San Diego,RETAIL
+CUST_000046,Linda Robinson,Philadelphia,ENTERPRISE
+CUST_000047,Jessica Johnson,Houston,RETAIL
+CUST_000048,Jennifer White,San Diego,RETAIL
+CUST_000049,Paul Harris,Chicago,WHOLESALE
+CUST_000050,Donald Walker,Dallas,WHOLESALE
+CUST_000051,Thomas Taylor,Boston,VIP
+CUST_000052,Susan Robinson,Dallas,WHOLESALE
+CUST_000053,Karen Gonzalez,Austin,ENTERPRISE
+CUST_000054,Mark Lewis,Dallas,VIP
+CUST_000055,Linda Davis,Houston,RETAIL
+CUST_000056,Nancy Smith,San Jose,WHOLESALE
+CUST_000057,Donna Davis,New York,RETAIL
+CUST_000058,Patricia Davis,Los Angeles,RETAIL
+CUST_000059,Nancy Williams,Dallas,WHOLESALE
+CUST_000060,Sarah Perez,San Diego,WHOLESALE
+CUST_000061,Paul Jones,Seattle,VIP
+CUST_000062,Jessica Sanchez,San Diego,VIP
+CUST_000063,Richard Brown,Los Angeles,VIP
+CUST_000064,Daniel Wilson,San Antonio,VIP
+CUST_000065,Patricia Perez,Austin,RETAIL
+CUST_000066,Patricia Gonzalez,Seattle,ENTERPRISE
+CUST_000067,Michael Davis,Houston,WHOLESALE
+CUST_000068,Paul Anderson,Chicago,VIP
+CUST_000069,Barbara Rodriguez,San Diego,WHOLESALE
+CUST_000070,John Anderson,Denver,RETAIL
+CUST_000071,Patricia Lee,Dallas,RETAIL
+CUST_000072,Jennifer Robinson,Denver,WHOLESALE
+CUST_000073,William Wilson,San Diego,VIP
+CUST_000074,Susan Ramirez,San Antonio,RETAIL
+CUST_000075,William Gonzalez,New York,VIP
+CUST_000076,Thomas Robinson,Denver,VIP
+CUST_000077,Charles Wilson,Seattle,VIP
+CUST_000078,Elizabeth Miller,Phoenix,WHOLESALE
+CUST_000079,Patricia Jackson,Seattle,RETAIL
+CUST_000080,Christopher Johnson,New York,VIP
+CUST_000081,Steven Robinson,Boston,WHOLESALE
+CUST_000082,Patricia Walker,Dallas,RETAIL
+CUST_000083,Barbara Williams,San Jose,RETAIL
+CUST_000084,Jessica Gonzalez,Los Angeles,WHOLESALE
+CUST_000085,Donna Martin,New York,RETAIL
+CUST_000086,Anthony Perez,San Jose,ENTERPRISE
+CUST_000087,Thomas Miller,Austin,ENTERPRISE
+CUST_000088,Jessica Rodriguez,San Antonio,WHOLESALE
+CUST_000089,Karen Anderson,Philadelphia,RETAIL
+CUST_000090,James Anderson,San Jose,RETAIL
+CUST_000091,John Moore,Houston,ENTERPRISE
+CUST_000092,David Robinson,Philadelphia,RETAIL
+CUST_000093,Jessica Lopez,Phoenix,WHOLESALE
+CUST_000094,Mark Clark,Dallas,ENTERPRISE
+CUST_000095,Michelle Sanchez,Austin,RETAIL
+CUST_000096,Emily Martinez,San Francisco,RETAIL
+CUST_000097,David Rodriguez,Los Angeles,RETAIL
+CUST_000098,Emily Jones,Phoenix,ENTERPRISE
+CUST_000099,Joshua Miller,Seattle,ENTERPRISE
