@@ -342,7 +342,7 @@ Every link below references an actual verified file committed in this repository
 ## 12. Author & Connect
 
 **Bheemalingappa**
-*Aspiring Data Engineer*
+*Data Engineer*
 
 - **GitHub Profile**: [@Bheemalingappa](https://github.com/Bheemalingappa)
 - **Project Repository**: [Spark-Skew-Lab](https://github.com/Bheemalingappa/Spark-Skew-Lab)
